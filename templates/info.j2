@@ -1,17 +1,31 @@
-{%- macro Infobox() -%}
-{{- '{{Infobox aircraft begin
- |name = అకాఫ్లీగ్ ముంచెన్ ఎంయు 13
- |image = File:Akaflieg Mue 13.jpg
- |image_border = yes
- |alt = అకాఫ్లీగ్ ముంచెన్ Mü13
-}}{{Infobox aircraft type
- |type = అకాఫ్లీగ్ ముంచెన్ Mü13
- |role = సెయిల్ ప్లేన్
- |national origin = జర్మనీ
- |manufacturer = అకాఫ్లీగ్ ముంచెన్
- |designer = ఎగాన్ స్కీబ్, కర్ట్ ష్మిత్ మరియు టోనీ ట్రోగర్ [1]
- |first flight = 1935
-}}'
- -}}
+{%- macro Infobox(name, img, type, role, origin, manufacturer, designer, first_flight, built, introduction, retired) -%}
+    {{ '{|{{Infobox aircraft begin'}}
+            |name = {{name}}
+            |image = {{img}}
+            |image_border = yes
+            |alt = అకాఫ్లీగ్ ముంచెన్ Mü13
+        {{ '}}' }}
+        {{ '{{Infobox aircraft type'}}
+        {% if type != "" %}
+             {{ '   |type = '}}{{type}}
+        {%- endif -%}
+                |role = {{role}}
+        {%- if origin != "" %}
+             {{ '   |national origin = '}}{{origin}}
+        {%- endif %}
+             |manufacturer = {{manufacturer}}
+        {%- if designer != "" %}
+             |designer = {{designer}}
+        {%- endif %}
+             |first flight = {{first_flight}}
+             |number built = {{built}}
+        {%- if introduction != "" %}
+             |introduced = {{introduction}}
+        {%- endif %}
+        {%- if retired != "" %}
+             |retired = {{retired}}
+        {%- endif %}
+
+    {{ '}}|}' }}
  {%- endmacro -%}
- {{ Infobox() }}
+ {{- Infobox(name, img, type, role, origin ,manufacturer, designer, first_flight, built, introduction, retired ) -}}
