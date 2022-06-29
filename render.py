@@ -1,6 +1,7 @@
 import pandas as pd
 from render_info import RenderInfo
 from render_description import RenderDescription
+from render_data import RenderData
 from infobox import InfoBox
 from genXML import tewiki, writePage
 class Render:
@@ -20,10 +21,13 @@ class Render:
             dictionary['img'] = file
             renderInfo = RenderInfo()
             template_info, glob = renderInfo.render(dictionary)
-            print(glob)
+            print(template_info)
             renderDescription = RenderDescription()
             template_description, glob =renderDescription.render_desc(dictionary, glob)
             print(template_description)
+            renderData = RenderData()
+            template_descriptionInfo, glob = renderData.render(dictionary, glob)
+            print(template_descriptionInfo)
         file_name = "plane.xml"
         with open(file_name, 'w') as fobj:
             fobj.write(tewiki + '\n')

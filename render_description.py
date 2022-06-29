@@ -12,3 +12,4 @@ class RenderDescription:
 
 if __name__ == "__main__":
     renderDescription = RenderDescription()
+    renderDescription.render_desc()
