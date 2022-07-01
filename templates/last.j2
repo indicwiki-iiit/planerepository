@@ -1,0 +1,9 @@
+{%- macro Description(glob) -%}
+
+==ప్రత్యేక లక్షణాలు==
+{% for key, value in glob.items() %}
+* {{key}} : {{ value }}
+{% endfor %}
+
+ {%- endmacro -%}
+ {{- Description(glob) -}}

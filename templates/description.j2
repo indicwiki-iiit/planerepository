@@ -1,5 +1,4 @@
 {%- macro Description(name, img, type, role, origin, manufacturer, designer, first_flight, built, introduction, retired) -%}
-        {{name}} అనేది {{manufacturer}} సంస్థ  నిర్మించిన విమానం. దీనిని  {{first_flight}} సంవత్సరం లో {% if origin != "" %}{{ ' '}}{{origin}} {{ ' దేశంలో ' }} {% endif %} రూపకల్పన చేసి నిర్మించారు .
-        {% if type != "" %} {{ ' ఇది  ఒక రీసెర్చ్ '}}{{type}} {{ '.' }} {% endif %} ఈ మోడల్ లో మొత్తం {{built}} విమానాలు తయారయ్యాయి
+        {{name}} అనేది {{manufacturer}} సంస్థ  నిర్మించిన విమానం. దీనిని  {{first_flight}} సంవత్సరం లో {% if origin != "" %}{{ ' '}}{{origin}} {{ ' దేశంలో ' }} {% endif %} రూపకల్పన చేసి నిర్మించారు .{% if type != "" %} {{ ' ఇది  ఒక రీసెర్చ్ '}}{{type}} {{ '.' }} {% endif %}ఈ మోడల్ లో మొత్తం {{built}} విమానాలు తయారయ్యాయి
  {%- endmacro -%}
  {{- Description(name, img, type, role, origin ,manufacturer, designer, first_flight, built, introduction, retired ) -}}

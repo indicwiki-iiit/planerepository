@@ -35,11 +35,10 @@
 |}
 
 {% if variants %}
-    ==రూపాంతరాలు==
-
-    {% for elem in variants %}
-        *'''{{- elem -}}'''
-    {% endfor %}
+==రూపాంతరాలు==
+{% for elem in variants %}
+*'''{{- elem -}}'''
+{% endfor %}
 {% endif %}
 
  {%- endmacro -%}

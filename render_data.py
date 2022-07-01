@@ -5,16 +5,19 @@ class RenderData:
         file_loader = FileSystemLoader('./')
         env = Environment(loader=file_loader)
         template = env.get_template('./templates/data.j2')
-        glob['crew']= dictionary['Crew']
+        if 'Crew' in dictionary:
+            glob['crew']= dictionary['Crew']
+
         variantsExists = False
         variants = []
         if 'Variants' in dictionary:
-            data = eval(dictionary['Variants'])
-            print('data' ,data, type(data))
+            dat = dictionary['Variants']
+            print('data' ,dat, type(dat))
             my_list = []
-            if type(data) == str:
-                my_list = data.split(",")
+            if type(dat) == str:
+                my_list = dat.split(",")
             else:
+                data = eval(dat)
                 for variant in data:
                     print('Variants', variant)
                     my_list.append(variant)
@@ -22,16 +25,25 @@ class RenderData:
             if len(my_list) > 0 :
                 variantsExists = True
 
-        glob['variants'] = my_list
-        glob['variantsExists'] = variantsExists
-        glob['maximumSpeed']= dictionary['Maximum speed']
-        glob['cruiseSpeed']= dictionary['Cruise speed']
-        glob['length']= dictionary['Length']
-        glob['height']= dictionary['Height']
-        glob['wingspan']= dictionary['Wingspan']
-        glob['wingarea']= dictionary['Wing area']
-        glob['grossweight']= dictionary['Gross weight']
-        glob['emptyweight']= dictionary['Empty weight']
+            glob['variants'] = my_list
+            glob['variantsExists'] = variantsExists
+
+        if 'Maximum speed' in dictionary:
+            glob['maximumSpeed']= dictionary['Maximum speed']
+        if 'Cruise speed' in dictionary:
+            glob['cruiseSpeed']= dictionary['Cruise speed']
+        if 'Length' in dictionary:
+            glob['length']= dictionary['Length']
+        if 'Height' in dictionary:
+            glob['height']= dictionary['Height']
+        if 'Wingspan' in dictionary:
+            glob['wingspan']= dictionary['Wingspan']
+        if 'Wing area' in dictionary:
+            glob['wingarea']= dictionary['Wing area']
+        if 'Gross weight' in dictionary:
+            glob['grossweight']= dictionary['Gross weight']
+        if 'Empty weight' in dictionary:
+            glob['emptyweight']= dictionary['Empty weight']
         return template.render(glob), glob
 
 

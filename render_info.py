@@ -8,43 +8,61 @@ class RenderInfo:
         file_loader = FileSystemLoader('./')
         env = Environment(loader=file_loader)
         template = env.get_template('./templates/info.j2')
-        origin = dictionary['National origin']
-        origin = self.get_literal(origin)
-        if (origin == "nan"):
-            origin = ""
-        else:
-            origin = dictionary['జాతీయ మూలం']
+        origin = ""
+        if 'National origin' in dictionary:
+            origin = dictionary['National origin']
+            origin = self.get_literal(origin)
+            if (origin == "nan"):
+                origin = ""
+            else:
+                origin = dictionary['జాతీయ మూలం']
 
-        designer = dictionary['Designer']
-        #print(designer)
-        #designer = self.get_eval(designer)
-        print('designer',type(designer))
+        designer = ""
+        if 'Designer' in dictionary:
+            designer = dictionary['Designer']
+            if type(designer) == float:
+                designer = ""
+            else :
+                designer = dictionary['డిజైనర్']
 
-        if type(designer) == float:
-            designer = ""
-        else :
-            designer = dictionary['డిజైనర్']
+        manufacturer=""
+        if 'Manufacturer' in dictionary:
+            designer = dictionary['Manufacturer']
+            if type(designer) == float:
+                manufacturer = ""
+            else :
+                manufacturer = dictionary['తయారీదారు']
 
-        introduction = dictionary['Introduction']
-        print('introduction', type(introduction))
+        introduction = ""
 
-        if type(introduction) == float and math.isnan(introduction):
-            introduction = ""
-        else:
-            introduction = int(introduction)
+        if 'Introduction' in dictionary:
+            introduction = dictionary['Introduction']
+            if type(introduction) == float:
+                introduction = int(introduction)
 
-        print('introduction', introduction)
-        print('introduction', type(introduction))
+        retired =""
+        if 'Retired' in dictionary:
+            retired = dictionary['Retired']
+            if type(retired) == float:
+                retired = int(retired)
 
-        retired = dictionary['Retired']
-        if type(retired) == float and math.isnan(retired):
-            retired = ""
-        else:
-            retired = int(retired)
 
+        file_flight = ""
+        if 'First flight' in dictionary:
+            first_flight = dictionary['First flight']
+            if type(retired) == float:
+                first_flight = int(first_flight)
+
+        built = ""
+        if 'Number built' in dictionary:
+            built = dictionary['Number built']
+
+        role =""
+        if 'పాత్ర' in dictionary:
+            role = dictionary['పాత్ర']
         glob = {'name': dictionary["పేరు"], 'img': dictionary['img'],
-        'role': dictionary['పాత్ర'], 'origin': origin, 'manufacturer' : dictionary['తయారీదారు'], 'designer':designer,
-        'first_flight': dictionary['First flight'], 'built':dictionary['Number built'], 'introduction': introduction, 'retired':retired  }
+        'role': role, 'origin': origin, 'manufacturer' : manufacturer, 'designer':designer,
+        'first_flight': file_flight, 'built':built, 'introduction': introduction, 'retired':retired  }
         if 'type' in dictionary:
             glob['type']= dictionary['type']
         else:

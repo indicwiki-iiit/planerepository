@@ -18,7 +18,10 @@ class InfoBox:
         #print(page)
         infobox = page.data['infobox']
         print(infobox)
-        return infobox['image']
+        if infobox is not None and 'image' in infobox:
+            return infobox['image']
+        else:
+            return ""
 
 
 if __name__ == "__main__":
