@@ -14,7 +14,7 @@ class RenderData:
             dat = dictionary['Variants']
             print('data' ,dat, type(dat))
             my_list = []
-            if type(dat) == str:
+            if type(dat) == str and '{' not in dat:
                 my_list = dat.split(",")
             else:
                 data = eval(dat)
@@ -29,9 +29,9 @@ class RenderData:
             glob['variantsExists'] = variantsExists
 
         if 'Maximum speed' in dictionary:
-            glob['maximumSpeed']= dictionary['Maximum speed']
+            glob['maximumSpeed']= dictionary['గరిష్ట వేగం']
         if 'Cruise speed' in dictionary:
-            glob['cruiseSpeed']= dictionary['Cruise speed']
+            glob['cruiseSpeed']= dictionary['క్రూయిజ్ వేగం']
         if 'Length' in dictionary:
             glob['length']= dictionary['Length']
         if 'Height' in dictionary:

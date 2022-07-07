@@ -47,7 +47,7 @@ class RenderInfo:
                 retired = int(retired)
 
 
-        file_flight = ""
+        first_flight = ""
         if 'First flight' in dictionary:
             first_flight = dictionary['First flight']
             if type(retired) == float:
@@ -62,11 +62,15 @@ class RenderInfo:
             role = dictionary['పాత్ర']
         glob = {'name': dictionary["పేరు"], 'img': dictionary['img'],
         'role': role, 'origin': origin, 'manufacturer' : manufacturer, 'designer':designer,
-        'first_flight': file_flight, 'built':built, 'introduction': introduction, 'retired':retired  }
+        'first_flight': first_flight, 'built':built, 'introduction': introduction, 'retired':retired  }
         if 'type' in dictionary:
             glob['type']= dictionary['type']
         else:
-            glob['type']= ""
+            if 'Type' in dictionary:
+                glob['type']= dictionary['Type']
+            else:
+                glob['type']= ""
+
         return template.render(glob), glob
 
     def get_literal(self, q):

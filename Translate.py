@@ -8,5 +8,5 @@ class Translate:
 
 if __name__ == "__main__":
     translate = Translate()
-    str = translate.translate("Maximum speed")
+    str = translate.translate("America Air Force")
     print(str)
