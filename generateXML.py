@@ -77,7 +77,7 @@ class GenerateXML:
             fobj.write('</mediawiki>')
 
     def genFile(self):
-        planeNo = 3200
+        planeNo =3200
         current_page_id = (1000000 + planeNo * 10)
         df = pd.read_excel("output"+str(planeNo)+".xlsx")
         for row in df.iterrows():

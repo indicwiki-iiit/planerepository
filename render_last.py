@@ -56,6 +56,8 @@ class RenderLast:
         exclude_words.append('Number built')
         exclude_words.append('Variantslink')
         exclude_words.append('Propellers')
+        exclude_words.append('Description')
+        exclude_words.append('వివరణ')
         self.exclude_words = exclude_words
 
 
