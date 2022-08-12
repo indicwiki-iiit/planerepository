@@ -29,9 +29,15 @@ class RenderData:
             glob['variantsExists'] = variantsExists
 
         if 'Maximum speed' in dictionary:
-            glob['maximumSpeed']= dictionary['గరిష్ట వేగం']
+            if 'గరిష్ట వేగం' in dictionary:
+                glob['maximumSpeed']= dictionary['గరిష్ట వేగం']
+            else:
+                glob['maximumSpeed']= dictionary['Maximum speed']
         if 'Cruise speed' in dictionary:
-            glob['cruiseSpeed']= dictionary['క్రూయిజ్ వేగం']
+            if 'క్రూయిజ్ వేగం' in dictionary:
+                glob['cruiseSpeed']= dictionary['క్రూయిజ్ వేగం']
+            else:
+                glob['cruiseSpeed']= dictionary['Cruise speed']
         if 'Length' in dictionary:
             glob['length']= dictionary['Length']
         if 'Height' in dictionary:

@@ -23,7 +23,8 @@ class RenderInfo:
             if type(designer) == float:
                 designer = ""
             else :
-                designer = dictionary['డిజైనర్']
+                if 'డిజైనర్' in dictionary:
+                    designer = dictionary['డిజైనర్']
 
         manufacturer=""
         if 'Manufacturer' in dictionary:
@@ -31,7 +32,8 @@ class RenderInfo:
             if type(designer) == float:
                 manufacturer = ""
             else :
-                manufacturer = dictionary['తయారీదారు']
+                if 'తయారీదారు' in dictionary:
+                    manufacturer = dictionary['తయారీదారు']
 
         introduction = ""
 
